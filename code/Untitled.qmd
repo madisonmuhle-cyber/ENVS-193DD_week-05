@@ -229,4 +229,15 @@ copepods <- ggplot(data    = copepods_df,
   # non-default theme
   theme_bw()
 ```
+---
 
+# Problem 1: Visualizing differences across sites in major taxon abundance
+
+## 1a. Plan your figure
+
+For the ostracod panel in 1c:
+
+# x-axis: `site_full` — sites ordered by median salinity (highest to lowest)
+# y-axis: `log_ave_lit` — log + 1 transformed average ostracod abundance per liter
+# geometry to represent average abundance/L: `geom_jitter()` — one open circle per site × date survey, with slight horizontal jitter to reduce overplotting
+# geometry to represent medians: `stat_summary(fun = "median")` — a larger filled point in a contrasting color and larger size, overlaid on the jittered observations
