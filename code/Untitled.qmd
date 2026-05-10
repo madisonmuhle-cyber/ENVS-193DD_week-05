@@ -241,3 +241,21 @@ For the ostracod panel in 1c:
 # y-axis: `log_ave_lit` — log + 1 transformed average ostracod abundance per liter
 # geometry to represent average abundance/L: `geom_jitter()` — one open circle per site × date survey, with slight horizontal jitter to reduce overplotting
 # geometry to represent medians: `stat_summary(fun = "median")` — a larger filled point in a contrasting color and larger size, overlaid on the jittered observations
+
+## 1b. Wrangle data
+
+```{r}
+#| label: ostracod-cleaning
+
+# filter to ostracods and log + 1 transform abundance, mirroring copepod wrangling
+ostracods_df <- aq_ins_clean |>
+  # keep only ostracod rows
+  filter(taxon == "ostracod") |>
+  # log + 1 transform to reduce right skew and handle zero counts
+  mutate(log_ave_lit = log(ave_lit + 1))
+
+# display 10 random rows to verify wrangling output
+slice_sample(ostracods_df, n = 10)
+```
+
+
