@@ -309,3 +309,15 @@ salinity / copepods / ostracods
 
 Median copepod log-abundance (shown by the blue points) is higher at West Pond and Devereux Creek, the lower-salinity sites on the left side of the x-axis, than at higher-salinity sites like North of Venoco Bridge, where the blue median point is near zero. Ostracods show a similar pattern: the orange median diamond is highest at West Pond and decreases toward  higher-salinity sites, suggesting that ostracod abundance has lower salinity conditions.
 
+---
+
+# Problem 2: Visualizing total abundance as a function of salinity
+
+## 2a. Plan the figure
+
+# x-axis: `med_sal` — median salinity (ppt) recorded on the sampling date
+# y-axis: `log_ave_lit` — log + 1 transformed average abundance per liter
+# color: `taxon_display` — taxon name in title case (one distinct color per taxon)
+# geometry: `geom_point()` — scatter of individual site × date observations
+# facets: `facet_wrap(~ taxon_display, scales = "free")` — one panel per taxon with free x- and y-axes 
+
