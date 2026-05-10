@@ -305,3 +305,7 @@ ostracods
 salinity / copepods / ostracods
 ```
 
+## 1e. Interpretation
+
+Median copepod log-abundance (shown by the blue points) is higher at West Pond and Devereux Creek, the lower-salinity sites on the left side of the x-axis, than at higher-salinity sites like North of Venoco Bridge, where the blue median point is near zero. Ostracods show a similar pattern: the orange median diamond is highest at West Pond and decreases toward  higher-salinity sites, suggesting that ostracod abundance has lower salinity conditions.
+
