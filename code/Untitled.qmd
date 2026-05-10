@@ -375,4 +375,7 @@ ggplot(data    = salinity_abund_df,
   theme(strip.text = element_text(face = "bold"))
 ```
 
+## 2d. Interpretation
+
+The species Copepoda and Ostracoda both exhibit a negative correlation with respect to salinity: maximum log abundances occur at minimum salinities, while the number decreases as the salinity increases, matching the trends noted for individual sites in Problem 1. Cladocera demonstrate a similar trend, where maximum abundance is seen at the minimum salinities. Chironomidae and Oligochaeta, however, have maximum abundance across a broad range of salinities, implying that these species can thrive at highly variable salinity levels. The species Nematoda and Polychaeta have low and uniform abundances at all salinities, making any correlation hard to discern from this graph.
 
