@@ -258,4 +258,39 @@ ostracods_df <- aq_ins_clean |>
 slice_sample(ostracods_df, n = 10)
 ```
 
+## 1c. Code the ostracod figure
+
+```{r}
+#| label: visualizing-ostracods
+#| fig-width: 10
+#| fig-height: 6
+
+# ostracod panel: individual observations + median per site
+ostracods <- ggplot(data    = ostracods_df,
+                    mapping = aes(x = site_full,
+                                  y = log_ave_lit)) +
+  # individual log-transformed abundance values per survey as open circles
+  geom_jitter(height = 0,
+              shape  = 21,
+              width  = 0.1) +
+  # median abundance per site: larger orange diamond, visually distinct from
+  # the small open jitter circles by color, size, and shape type
+  stat_summary(geom  = "point",
+               fun   = "median",
+               size  = 4,
+               color = "orange",
+               shape = 18) +
+  # wrap long site names to prevent overlap on x-axis
+  scale_x_discrete(labels = label_wrap(15)) +
+  # readable axis labels and title naming the taxonomic group
+  labs(x     = "Site",
+       y     = "log + 1 transformed average abundance/L",
+       title = "Ostracods") +
+  # non-default clean theme
+  theme_bw()
+
+# display ostracod plot
+ostracods
+```
+
 
