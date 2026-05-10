@@ -321,3 +321,26 @@ Median copepod log-abundance (shown by the blue points) is higher at West Pond a
 # geometry: `geom_point()` — scatter of individual site × date observations
 # facets: `facet_wrap(~ taxon_display, scales = "free")` — one panel per taxon with free x- and y-axes 
 
+## 2b. Wrangle data
+
+```{r}
+#| label: salinity-abund-wrangle
+
+# build data frame with log-transformed abundance and readable taxon labels,
+# with taxa ordered by maximum abundance
+salinity_abund_df <- aq_ins_clean |>
+  # log + 1 transform abundance across all taxa
+  mutate(log_ave_lit = log(ave_lit + 1)) |>
+  # replace underscores with spaces and convert to title case for facet labels
+  mutate(taxon_display = str_replace_all(taxon, "_", " ") |>
+           str_to_title()) |>
+  # order taxon factor levels by maximum abundance (highest max first)
+  mutate(taxon_display = fct_reorder(taxon_display,
+                                     ave_lit,
+                                     .fun  = max,
+                                     .desc = TRUE))
+
+# display 10 random rows to verify wrangling output
+slice_sample(salinity_abund_df, n = 10)
+```
+
