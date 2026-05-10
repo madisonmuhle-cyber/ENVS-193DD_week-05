@@ -344,3 +344,35 @@ salinity_abund_df <- aq_ins_clean |>
 slice_sample(salinity_abund_df, n = 10)
 ```
 
+## 2c. Code the figure
+
+```{r}
+#| label: salinity-abund-plot
+#| fig-width: 10
+#| fig-height: 8
+
+# scatter plot of log abundance vs salinity with one panel per taxon
+ggplot(data    = salinity_abund_df,
+       mapping = aes(x     = med_sal,
+                     y     = log_ave_lit,
+                     color = taxon_display)) +
+  # individual site × date observations as semi-transparent points
+  geom_point(alpha = 0.6,
+             size  = 1.8) +
+  # one panel per taxon; free axes show within-taxon variation clearly
+  facet_wrap(~ taxon_display,
+             scales = "free") +
+  # readable axis labels
+  labs(x = "Median salinity (ppt)",
+       y = "log + 1 transformed average abundance/L") +
+  # non-default ColorBrewer palette instead of ggplot defaults
+  scale_color_brewer(palette = "Set2") +
+  # remove redundant color legend (facet strip labels already identify taxa)
+  guides(color = "none") +
+  # non-default theme
+  theme_bw() +
+  # bold facet strip text for readability
+  theme(strip.text = element_text(face = "bold"))
+```
+
+
